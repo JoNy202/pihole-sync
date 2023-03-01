@@ -24,7 +24,7 @@ systemctl restart lighttpd.service
 5.   Check server by opening the link in the browser. The result should be 'ok:{sha256-hash}'
 
 ```url
-http://{master-pihole-ip}/sync/{secret-key}/cname/hash
+http://{master-pihole-ip}/sync/{secret-key}/dns/hash
 ```
 
 For slave-pihole server:
