@@ -7,12 +7,11 @@ $cnameSyncFile = "/etc/dnsmasq.d/06-pihole-sync-custom-cname.conf";
 $dnsmasqConfigFile = "/etc/dnsmasq.d/02-pihole-sync.conf";
 $piholeBin = "/usr/local/bin/pihole";
 
-$dnsmasqConfig = "#updated automatically" . PHP_EOL .
-			 "addn-hosts={$dnsSyncFile}";
+$dnsmasqConfig = "#updated automatically" . PHP_EOL . "addn-hosts={$dnsSyncFile}";
 if (!is_file($dnsmasqConfigFile))
 {
 	print("info: creating dnsmasq config '{$dnsmasqConfigFile}'" . PHP_EOL);
-    file_put_contents($dnsmasqConfigFile, $dnsmasqConfig)
+	file_put_contents($dnsmasqConfigFile, $dnsmasqConfig)
 		or die("error: cannot create dnsmasq config '{$dnsmasqConfigFile}'");
 }
 else
@@ -33,8 +32,8 @@ $isNeedDNSReload = false;
 $isNeedDNSRestart = false;
 
 $filesArr = [
-    "dns" => $dnsSyncFile,
-    "cname" => $cnameSyncFile,
+	"dns" => $dnsSyncFile,
+	"cname" => $cnameSyncFile,
 ];
 
 foreach ($filesArr as $name => $file)
@@ -102,11 +101,10 @@ foreach ($filesArr as $name => $file)
 }
 
 $piholeExecute = NULL;
-
 if ($isNeedDNSRestart)
 {
 	print("info: restarting DNS" . PHP_EOL);
-	$piholeExecute = $piholeBin . " restartdns";	
+	$piholeExecute = $piholeBin . " restartdns";
 }
 else if ($isNeedDNSReload)
 {
@@ -117,9 +115,11 @@ else if ($isNeedDNSReload)
 if ($piholeExecute !== NULL)
 {
 	$output = null;
-    $status = -1;
-    exec($piholeExecute, $output, $status);
-    if ($status !== 0)
+	$status = -1;
+	// for cron
+	putenv("PATH=" . getenv('PATH') . ":/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin");
+	exec($piholeExecute, $output, $status);
+	if ($status !== 0)
 		print("error: restart/reload failed." . PHP_EOL);
 }
 
