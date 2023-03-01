@@ -7,7 +7,7 @@ pihole-sync is a tool for synchronizing local dns and cname records from master-
 For master-pihole server:
 
 1.  Copy files from the folder named 'server' to the master-pihole server.
-2.   Write the secret key in the file '/var/www/sync.server.php'.
+2.   Write the {secret key} in the file '/var/www/sync.server.php'.
 3.   Create a link for the file '/etc/lighttpd/20-pihole-sync.conf' with command:
 
 ```shell
@@ -30,7 +30,7 @@ http://{master-pihole-ip}/sync/{secret-key}/cname/hash
 For slave-pihole server:
 
 1.   Copy files from the folder named 'client' to the slave-pihole server.
-2.   Write the secret key (same as master-pihole) in the file '/root/sync.client.php'.
+2.   Write {master-pihole-ip} and {secret key} (same as master-pihole) in the file '/root/sync.client.php'.
 3.   Check client by executing the command:
 
 ```shell
