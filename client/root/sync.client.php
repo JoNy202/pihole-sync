@@ -1,7 +1,7 @@
 <?php
 
-$masterServer 	= "192.168.0.5";
-$key = "-- secure key --";
+$masterServer = "{master-pihole-ip}";
+$key = "{secret-key}";
 $dnsSyncFile = "/etc/pihole/custom.sync.list";
 $cnameSyncFile = "/etc/dnsmasq.d/06-pihole-sync-custom-cname.conf";
 $dnsmasqConfigFile = "/etc/dnsmasq.d/02-pihole-sync.conf";

@@ -1,6 +1,6 @@
 <?php
 
-$key = "-- secure key --";
+$key = "{secret-key}";
 $dnsSourceFile = "/etc/pihole/custom.list";
 $cnameSourceFile = "/etc/dnsmasq.d/05-pihole-custom-cname.conf";
 
